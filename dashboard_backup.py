@@ -1,11 +1,10 @@
 import os
-import sys
 import env
 import json
 import boto3
 import datetime
 from datadog import initialize, api
-print("++++++++++++++++++++++++++++Command Line Argument Test +++++++++++++++++++++++"+sys.argv[1])
+
 # TO GET CURRENT DATE
 currentDate = datetime.datetime.now()
 
