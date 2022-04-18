@@ -2,9 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Installing Requirements') {
             steps {
-                echo 'Hello World'
+                sh '''
+                pip install -r requirement.txt
+                '''
+            }
+        }
+        stage('Running Backup') {
+            steps {
+                sh '''
+                python3 dashboard_backup.py
+                '''
             }
         }
     }
