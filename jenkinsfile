@@ -1,3 +1,14 @@
+@groovy('jenkins-python-pipeline@main') _
+
+def slack_channel = 'dashboard-backup-alert'
+
+def attachments = [
+  [
+    text: 'Dashboard Backup Success !!!',
+    color: '#ff0000'
+  ]
+]
+
 pipeline {
     agent any
     triggers {
@@ -20,4 +31,6 @@ pipeline {
             }
         }
     }
+
+slackSend(channel: slack_channel, attachments: attachments)
 }
