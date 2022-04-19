@@ -30,5 +30,14 @@ pipeline {
         }
     }
 
-    slackSend(channel: "#dashboard-backup-alert", message: "Hello")
+    post {
+    success{
+        sendNotifications currentBuild.result, "Job: '${env.JOB_NAME}',VERSION: 'commit-${commit}-build-${env.BUILD_NUMBER}'", slack_channel
+        archiveArtifacts artifacts: 'tfplan.txt'
+    }
+    unsuccessful{
+        sendNotifications currentBuild.result, "Job: '${env.JOB_NAME}',VERSION: 'commit-${commit}-build-${env.BUILD_NUMBER}'", slack_channel
+        archiveArtifacts artifacts: 'tfplan.txt'
+    }
+  }
 }
