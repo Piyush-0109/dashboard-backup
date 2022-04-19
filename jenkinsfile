@@ -1,12 +1,3 @@
-def slack_channel = 'dashboard-backup-alert'
-
-def attachments = [
-  [
-    text: 'Dashboard Backup Success !!!',
-    color: '#ff0000'
-  ]
-]
-
 pipeline {
     agent any
     triggers {
@@ -29,15 +20,4 @@ pipeline {
             }
         }
     }
-
-    post {
-    success{
-        sendNotifications currentBuild.result, "Hello", slack_channel
-        archiveArtifacts artifacts: 'tfplan.txt'
-    }
-    unsuccessful{
-        sendNotifications currentBuild.result, "Hello", slack_channel
-        archiveArtifacts artifacts: 'tfplan.txt'
-    }
-  }
 }
