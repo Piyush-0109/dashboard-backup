@@ -32,11 +32,11 @@ pipeline {
 
     post {
     success{
-        sendNotifications currentBuild.result, "Job: '${env.JOB_NAME}',VERSION: 'commit-${commit}-build-${env.BUILD_NUMBER}'", slack_channel
+        sendNotifications currentBuild.result, "Hello", slack_channel
         archiveArtifacts artifacts: 'tfplan.txt'
     }
     unsuccessful{
-        sendNotifications currentBuild.result, "Job: '${env.JOB_NAME}',VERSION: 'commit-${commit}-build-${env.BUILD_NUMBER}'", slack_channel
+        sendNotifications currentBuild.result, "Hello", slack_channel
         archiveArtifacts artifacts: 'tfplan.txt'
     }
   }
