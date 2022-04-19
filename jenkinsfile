@@ -30,5 +30,5 @@ pipeline {
         }
     }
 
-slackSend(channel: slack_channel, attachments: attachments)
+    slackSend(channel: "#dashboard-backup-alert", message: "Hello")
 }
