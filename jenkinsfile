@@ -1,5 +1,3 @@
-@groovy('jenkins-python-pipeline@main') _
-
 def slack_channel = 'dashboard-backup-alert'
 
 def attachments = [
